@@ -79,7 +79,7 @@ Before you begin, ensure you have the following installed:
 - [MetaMask](https://metamask.io/) browser extension
 ### Project Structure
 
-
+```
 decentralized-job-board/
 ├── backend/                # Backend code
 │   ├── build/              # Compiled contract artifacts
@@ -124,7 +124,7 @@ decentralized-job-board/
     ├── package.json        # Server dependencies
     ├── package-lock.json   # Dependency lock file
     └── server.js           # Server code
-
+```
 
 ## Setup Instructions
 
@@ -277,7 +277,7 @@ The application should now be running at [http://localhost:3000](http://localhos
 ## photos
 
 ### Welcome Page
-![Welcome Page](photos/Welcome.jpg)
+![Welcome Page](photos/Welcome%20.jpg)
 
 ### As Employer
 ![As_Employer](photos/AS%20Employer.jpg)
@@ -310,7 +310,7 @@ The application should now be running at [http://localhost:3000](http://localhos
 ![Multiple_applicants](photos/Multiple%20applicants.jpg)
 
 ### Posted Jobs
-![Posted](photos/Posted.jpg)
+![Posted](photos/POSTED.jpg)
 
 ### Release Payments
 ![Release](photos/RELEASE.jpg)
