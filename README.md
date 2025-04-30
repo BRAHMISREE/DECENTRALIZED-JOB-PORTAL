@@ -77,10 +77,9 @@ Before you begin, ensure you have the following installed:
 - [Truffle](https://www.trufflesuite.com/truffle) (`npm install -g truffle`)
 - [Ganache](https://www.trufflesuite.com/ganache) - GUI or CLI version
 - [MetaMask](https://metamask.io/) browser extension
-
+### Project Structure
 ```
 
-### Project Structure
 decentralized-job-board/
 ├── backend/                # Backend code
 │   ├── build/              # Compiled contract artifacts
