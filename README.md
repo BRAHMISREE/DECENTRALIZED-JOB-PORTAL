@@ -1,9 +1,8 @@
 # Decentralized Job Board
 
-
+![Project Banner](path/to/banner-image.png)
 
 A trustless job marketplace built on blockchain technology where employers can post jobs with escrowed payments, and freelancers can apply for jobs. Smart contracts automatically handle fund management and job completion processes, release payment upon approval, and handle disputes.
-
 
 ## Team Members
 
@@ -14,9 +13,15 @@ A trustless job marketplace built on blockchain technology where employers can p
 - Korubilli Vaishnavi - 230041016
 - Mullapudi Namaswi - 230041023
 
+## Project Overview
 
+The Decentralized Job Board is a blockchain-based platform that creates a trustless environment for employers and freelancers to connect, collaborate, and transact. The platform eliminates the need for intermediaries by leveraging smart contracts to manage job postings, applications, and payments. This ensures that:
 
+1. Employers have confidence their funds are secure and will only be released upon job completion
+2. Freelancers have confidence they will be paid for completed work
+3. Both parties benefit from reduced fees typically charged by centralized platforms
 
+![Project Overview](path/to/project-overview-diagram.png)
 
 ## Key Features
 
@@ -34,15 +39,15 @@ A trustless job marketplace built on blockchain technology where employers can p
 
 The Decentralized Job Board follows a classic decentralized application (DApp) architecture:
 
-
+![Architecture Diagram](path/to/architecture-diagram.png)
 
 1. **Frontend Layer**: React-based user interface that interacts with the blockchain through web3.js
 2. **Blockchain Layer**: Ethereum smart contracts that handle the business logic and enforce rules
-3. **Off-Chain Storage**: JSON server for storing detailed job descriptions to reduce on-chain costs
+3. **Off-Chain Storage**: Pinata IPFS service for storing detailed job descriptions to reduce on-chain costs
 
 Data flow:
 - Job basic information (title, budget, status) → Stored on blockchain
-- Detailed job descriptions → Stored off-chain with references on-chain
+- Detailed job descriptions → Stored off-chain on IPFS via Pinata with content hashes stored on-chain
 - Transaction data (applications, payments) → Processed through smart contracts
 
 ## Tech Stack
@@ -58,9 +63,8 @@ Data flow:
 - **Blockchain Connection**: web3.js
 - **Wallet Integration**: MetaMask
 
-
 ### Off-Chain Storage
-- **Job Description Server**: Pinata IPFS Service
+- **Job Description Storage**: Pinata IPFS Service
 
 ## Smart Contracts
 
@@ -101,7 +105,6 @@ decentralized-job-board/
 │   ├── package.json        # Frontend dependencies
 │   └── README.md           # Frontend documentation
 ├── scripts/                # Helper scripts
-├── db.json                 # JSON server database for job descriptions
 ├── truffle-config.js       # Truffle configuration
 ├── package.json            # Project dependencies
 └── README.md               # This file
@@ -170,7 +173,18 @@ npx ganache-cli --port 8545 --networkId 1337 --deterministic
 
 ![MetaMask Account Import](path/to/metamask-account-import.png)
 
-### 5. Compile and Deploy Smart Contracts
+### 5. Set Up Pinata Account
+
+1. Sign up for a free account at [Pinata](https://app.pinata.cloud/register)
+2. Generate an API key from the Pinata dashboard
+3. Add the API key and secret to your project's environment variables (create a `.env` file in the project root):
+
+```
+REACT_APP_PINATA_API_KEY=your_api_key
+REACT_APP_PINATA_SECRET_API_KEY=your_api_secret
+```
+
+### 6. Compile and Deploy Smart Contracts
 
 ```bash
 truffle compile              # Compile the contracts
@@ -179,7 +193,7 @@ truffle migrate --reset      # Deploy to Ganache
 
 ![Contract Deployment](path/to/contract-deployment.png)
 
-### 6. Start the Frontend
+### 7. Start the Frontend
 
 ```bash
 cd client
@@ -190,17 +204,6 @@ The application should now be running at [http://localhost:3000](http://localhos
 
 ![Application Startup](path/to/application-startup.png)
 
-### 7. Start the Job Description Server (Optional)
-
-For storing detailed job descriptions off-chain:
-
-```bash
-npm install -g json-server   # Install JSON Server globally
-json-server --watch db.json --port 3001
-```
-
-The server will be available at [http://localhost:3001](http://localhost:3001).
-
 ## Using the Application
 
 ### Initial Setup
@@ -208,8 +211,6 @@ The server will be available at [http://localhost:3001](http://localhost:3001).
 1. Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
 2. You'll be prompted to connect your MetaMask wallet - click "Connect"
 3. Select the account you wish to use (imported from Ganache)
-
-
 
 ### User Workflows
 
@@ -226,6 +227,7 @@ The server will be available at [http://localhost:3001](http://localhost:3001).
 
    - Click "Post Job" and confirm the transaction in MetaMask
    - Your job will now be visible on the job board
+   - The detailed job description will be uploaded to IPFS via Pinata, with only the content hash stored on-chain
 
    ![Confirm Job Posting](path/to/confirm-job-posting.png)
 
@@ -251,6 +253,7 @@ The server will be available at [http://localhost:3001](http://localhost:3001).
    - Navigate to the "Job Board" page
    - Browse through the list of available jobs
    - Click on any job to view its details
+   - Detailed job descriptions are fetched from IPFS via the stored content hash
 
    ![Job Board](path/to/job-board.png)
 
@@ -300,33 +303,105 @@ This will execute all test cases in the `test/` directory and show the results:
 
 ![Truffle Tests](path/to/truffle-tests.png)
 
+## IPFS Job Description Storage with Pinata
 
-
-## Local Job Description Server
-
-For more efficient storage of detailed job descriptions, we use a local JSON server:
+For more efficient storage of detailed job descriptions, we use Pinata's IPFS pinning service:
 
 ### Purpose
 
 - Stores non-critical job data off-chain to reduce gas costs
-- Maintains a link between on-chain job IDs and detailed descriptions
+- Maintains a link between on-chain job IDs and detailed descriptions via IPFS content hashes (CIDs)
 - Enables rich content like markdown, formatting, and images
+- Provides decentralized storage that aligns with the blockchain philosophy
 
-### Setup
+### Integration
 
-1. Install JSON Server globally:
+#### Backend Integration
 
-```bash
-npm install -g json-server
-```
-
-
-2. Start the server:
+1. Install the Pinata SDK in your project:
 
 ```bash
-json-server --watch db.json --port 3001
+npm install @pinata/sdk
 ```
 
+2. Set up Pinata in your application:
+
+```javascript
+const pinataSDK = require('@pinata/sdk');
+const pinata = new pinataSDK({ 
+    pinataApiKey: process.env.REACT_APP_PINATA_API_KEY, 
+    pinataSecretApiKey: process.env.REACT_APP_PINATA_SECRET_API_KEY 
+});
+```
+
+3. Upload job descriptions to IPFS:
+
+```javascript
+const uploadToIPFS = async (jobData) => {
+  try {
+    const response = await pinata.pinJSONToIPFS(jobData);
+    return response.IpfsHash; // This hash is stored on-chain
+  } catch (error) {
+    console.error('Error uploading to IPFS:', error);
+    throw error;
+  }
+};
+```
+
+4. Fetch job descriptions from IPFS:
+
+```javascript
+const fetchFromIPFS = async (ipfsHash) => {
+  try {
+    const url = `https://gateway.pinata.cloud/ipfs/${ipfsHash}`;
+    const response = await fetch(url);
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching from IPFS:', error);
+    throw error;
+  }
+};
+```
+
+#### Smart Contract Integration
+
+The job posting function stores the IPFS hash in the contract:
+
+```solidity
+struct Job {
+    uint256 id;
+    string title;
+    uint256 budget;
+    address employer;
+    address freelancer;
+    JobStatus status;
+    string ipfsHash;  // Stores the IPFS hash of detailed description
+}
+
+function postJob(string memory _title, string memory _ipfsHash, uint256 _budget) external {
+    // Create new job with IPFS hash reference
+    uint256 jobId = nextJobId++;
+    jobs[jobId] = Job({
+        id: jobId,
+        title: _title,
+        budget: _budget,
+        employer: msg.sender,
+        freelancer: address(0),
+        status: JobStatus.Posted,
+        ipfsHash: _ipfsHash
+    });
+    
+    emit JobPosted(jobId, _title, _budget, msg.sender);
+}
+```
+
+### Benefits of IPFS with Pinata
+
+- **Truly Decentralized**: Job descriptions are stored on a distributed network
+- **Content-Addressable**: Data is retrieved by its content hash, ensuring integrity
+- **Cost-Effective**: Reduces on-chain storage costs significantly
+- **Permanent Storage**: Data remains available as long as it's pinned
+- **Censorship Resistant**: No single point of failure for stored data
 
 ## Gas Optimization
 
@@ -339,8 +414,9 @@ To keep transaction costs low, we've implemented several gas optimization techni
   - Budget amount
   - Status enums
   - Employer/freelancer addresses
+  - IPFS hash (CID) of detailed description
   
-- **Off-Chain Storage**: Detailed information is stored in the JSON server
+- **Off-Chain Storage**: Detailed information is stored on IPFS via Pinata
   - Comprehensive job descriptions
   - Requirement lists
   - Contact information
@@ -357,8 +433,6 @@ To keep transaction costs low, we've implemented several gas optimization techni
   - Avoiding loops in critical functions
   - Using mappings for O(1) lookups
   - Minimal state changes per transaction
-
-
 
 ## Security Considerations
 
@@ -392,8 +466,6 @@ modifier onlyEmployer(uint256 _jobId) {
   - State variables are updated before external calls
   - Prevents reentrancy attacks
 
-
-
 ### Input Validation
 
 - **Comprehensive Checks**:
@@ -414,8 +486,7 @@ modifier onlyEmployer(uint256 _jobId) {
   - Check Solidity version compatibility
 
 - **Out of Gas Errors**
-  - Increase the gas limit in `truffle-config.js`:
-  
+  - Increase the gas limit in `truffle-config.js`
 
 ### MetaMask Connection Issues
 
@@ -443,16 +514,27 @@ modifier onlyEmployer(uint256 _jobId) {
   - Check browser console for specific errors
 
 - **Job Data Not Loading**
-  - Verify that JSON Server is running if using off-chain storage
-  - Check network requests in browser developer tools
+  - Verify that your Pinata API keys are correctly configured
+  - Check if the IPFS hash is correctly stored and retrieved from the smart contract
+  - Try accessing the content directly via an IPFS gateway to verify availability
+
+### Pinata/IPFS Issues
+
+- **Upload Failures**
+  - Verify your API keys are correct and have the necessary permissions
+  - Check if you've exceeded your Pinata plan limits
+  - Ensure the data format is valid for pinning (valid JSON)
+
+- **Content Not Available**
+  - Confirm the content was successfully pinned by checking the Pinata dashboard
+  - Try accessing via multiple IPFS gateways
+  - Verify the correct hash is being used for retrieval
 
 ### Transaction Failures
 
 - **Insufficient Funds**
   - Ensure your MetaMask account has enough ETH for the transaction and gas fees
   - For escrow transactions, verify you're sending exactly the required amount
-
-
 
 ## License
 
