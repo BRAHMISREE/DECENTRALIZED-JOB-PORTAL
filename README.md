@@ -66,9 +66,6 @@ Data flow:
 ### Off-Chain Storage
 - **Job Description Storage**: Pinata IPFS Service
 
-## Smart Contracts
-
-The platform is built around the following smart contract functions:
 
 
 ## Prerequisites
