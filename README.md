@@ -143,7 +143,7 @@ cd ..
 2. Click "Add Project" and select the `truffle-config.js` file from your project
 3. Save the workspace
 
-![Ganache Setup](path/to/ganache-setup.png)
+
 
 #### Option 2: Ganache CLI
 
@@ -164,14 +164,12 @@ npx ganache-cli --port 8545 --networkId 1337 --deterministic
      - Chain ID: 1337
      - Currency Symbol: ETH
 
-![MetaMask Network Setup](path/to/metamask-network-setup.png)
 
 4. Import an account from Ganache:
    - Copy the private key of one of the accounts in Ganache
    - In MetaMask, click on the account icon > Import Account
    - Paste the private key and click "Import"
 
-![MetaMask Account Import](path/to/metamask-account-import.png)
 
 ### 5. Set Up Pinata Account
 
@@ -191,7 +189,6 @@ truffle compile              # Compile the contracts
 truffle migrate --reset      # Deploy to Ganache
 ```
 
-![Contract Deployment](path/to/contract-deployment.png)
 
 ### 7. Start the Frontend
 
@@ -202,7 +199,7 @@ npm start
 
 The application should now be running at [http://localhost:3000](http://localhost:3000).
 
-![Application Startup](path/to/application-startup.png)
+
 
 ## Using the Application
 
@@ -392,37 +389,14 @@ To keep transaction costs low, we've implemented several gas optimization techni
 - **Efficient Data Types**:
   - `uint256` for ETH values (budget/payment amounts)
   - `enum` for job status instead of strings
-  - Appropriate struct packing
-
+ 
 - **Function Efficiency**:
   - Avoiding loops in critical functions
   - Using mappings for O(1) lookups
   - Minimal state changes per transaction
 
-## Security Considerations
-
-The smart contract incorporates several security best practices:
 
 
-### Secure Fund Management
-
-- **Escrow Pattern**:
-  - Funds are locked in the contract until explicit release
-  - No direct transfers between users
-  - Exact payment amount validation
-
-### State Management
-
-- **Checks-Effects-Interactions Pattern**:
-  - State variables are updated before external calls
-  - Prevents reentrancy attacks
-
-### Input Validation
-
-- **Comprehensive Checks**:
-  - All inputs are validated before processing
-  - Edge cases are handled gracefully
-  - Status transitions are enforced
 
 ## Troubleshooting
 
@@ -455,14 +429,7 @@ The smart contract incorporates several security best practices:
   - Check that `truffle-config.js` points to the correct build directory
   - Verify that the contract address is correctly set in the frontend
 
-- **Web3 Connection Errors**
-  - Ensure MetaMask is unlocked and connected to the site
-  - Check browser console for specific errors
 
-- **Job Data Not Loading**
-  - Verify that your Pinata API keys are correctly configured
-  - Check if the IPFS hash is correctly stored and retrieved from the smart contract
-  - Try accessing the content directly via an IPFS gateway to verify availability
 
 ### Transaction Failures
 
