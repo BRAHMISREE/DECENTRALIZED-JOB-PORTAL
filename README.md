@@ -140,18 +140,18 @@ cd decentralized-job-board
 ### 2. Install Dependencies
 
 Install the backend dependencies:
-
+```
 bash
 npm install
-
+```
 
 Install the frontend dependencies:
-
+```
 bash
 cd client
 npm install
 cd ..
-
+```
 
 ### 3. Set Up Ganache
 
