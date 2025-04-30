@@ -276,7 +276,7 @@ The application should now be running at [http://localhost:3000](http://localhos
 
 ## Frontend Screenshots
 
-## photos
+
 
 ### Welcome Page
 ![Welcome Page](photos/Welcome%20.jpg)
