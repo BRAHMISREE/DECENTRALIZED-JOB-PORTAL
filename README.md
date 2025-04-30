@@ -4,7 +4,7 @@
 
 A trustless job marketplace built on blockchain technology where employers can post jobs with escrowed payments, and freelancers can apply for jobs. Smart contracts automatically handle fund management and job completion processes, release payment upon approval, and handle disputes.
 
-##Team Name - CryptoSmiths
+## Team Name - CryptoSmiths
 
 ## Team Members
 
