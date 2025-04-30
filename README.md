@@ -235,14 +235,10 @@ The application should now be running at [http://localhost:3000](http://localhos
      - Title: A concise job title
      - Description: Detailed job requirements
      - Budget: Amount in ETH you're willing to pay
+     - Click "Post Job" and confirm the transaction in MetaMask
+     - Your job will now be visible on the job board
+     - The detailed job description will be uploaded to IPFS via Pinata, with only the content hash stored on-chain
 
-   ![Post Job Form](path/to/post-job-form.png)
-
-   - Click "Post Job" and confirm the transaction in MetaMask
-   - Your job will now be visible on the job board
-   - The detailed job description will be uploaded to IPFS via Pinata, with only the content hash stored on-chain
-
-   ![Confirm Job Posting](path/to/confirm-job-posting.png)
 
 2. **Escrow Funds for a Job**
    - Navigate to "My Posted Jobs" page
@@ -250,15 +246,11 @@ The application should now be running at [http://localhost:3000](http://localhos
    - Click "Escrow Funds" button
    - Confirm the transaction in MetaMask to lock the funds in the contract
 
-   ![Escrow Funds](path/to/escrow-funds.png)
-
 3. **Review Applications and Release Payment**
    - Navigate to "My Posted Jobs" page
    - Find the job with an assigned freelancer
    - Once work is completed (agreed upon off-chain), click "Release Payment"
    - Confirm the transaction in MetaMask to transfer funds to the freelancer
-
-   ![Release Payment](path/to/release-payment.png)
 
 #### As a Freelancer
 
@@ -268,21 +260,17 @@ The application should now be running at [http://localhost:3000](http://localhos
    - Click on any job to view its details
    - Detailed job descriptions are fetched from IPFS via the stored content hash
 
-   ![Job Board](path/to/job-board.png)
 
 2. **Apply for a Job**
    - On the job details page, click "Apply for Job"
    - Confirm the transaction in MetaMask
    - Wait for the employer to review and accept your application
 
-   ![Apply for Job](path/to/apply-for-job.png)
 
 3. **Receive Payment**
    - Complete the work as agreed upon off-chain
    - Once the employer releases payment, funds will automatically be transferred to your wallet
    - You can track payment status on the "My Jobs" page
-
-   ![Payment Received](path/to/payment-received.png)
 
 ## Frontend Screenshots
 
@@ -292,13 +280,13 @@ The application should now be running at [http://localhost:3000](http://localhos
 ![Welcome Page](photos/Welcome.png)
 
 ### As Employer
-![As_Employer](photos/AS Employer.png)
+![As_Employer](photos/AS%20Employer.png)
 
 ### Employer Dashboard
-![Employer_Dashboard](photos/Employer Dashboard.png)
+![Employer_Dashboard](photos/Employer%20Dashboard.png)
 
 ### Post Job
-![Post_job](photos/Post Job.png)
+![Post_job](photos/Post%20Job.png)
 
 ### Available Jobs
 ![Available](photos/Available.png)
@@ -312,16 +300,14 @@ The application should now be running at [http://localhost:3000](http://localhos
 ![DISPUTE](photos/DISPUTE.png)
 
 
-
-
 ### MARK WORK DONE
-![MARK_WORK_DONE](photos/MARK WORK DONE.png)
+![MARK_WORK_DONE](photos/MARK%20WORK%20DONE.png)
 
 ### Profile/My Jobs
-![Profile](photos/MY JOBS.png)
+![Profile](photos/MY%20JOBS.png)
 
 ### Multiple applicants
-![Multiple_applicants](photos/Multiple applicants.png)
+![Multiple_applicants](photos/Multiple%20applicants.png)
 
 ### Posted Jobs
 ![Posted](photos/Posted.png)
@@ -330,15 +316,15 @@ The application should now be running at [http://localhost:3000](http://localhos
 ![Release](photos/RELEASE.png)
 
 ### Submit Application
-![Submit](photos/Submit application.png)
+![Submit](photos/Submit%20application.png)
 
 
 
 ### Multiple applicants
-![Multiple applicants](photos/Multiple applicants.png)
+![Multiple applicants](photos/Multiple%20applicants.png)
 
 
-
+### Testing 
 
 To verify that the smart contracts are functioning correctly, run the automated tests:
 
