@@ -131,11 +131,11 @@ decentralized-job-board/
 ## Setup Instructions
 
 ### 1. Clone the Repository
-
+```
 bash
 git clone https://github.com/yourusername/decentralized-job-board.git
 cd decentralized-job-board
-
+```
 
 ### 2. Install Dependencies
 
