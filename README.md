@@ -394,8 +394,6 @@ const fetchFromIPFS = async (ipfsHash) => {
   - Ensure your MetaMask account has enough ETH for the transaction and gas fees
   - For escrow transactions, verify you're sending exactly the required amount
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
