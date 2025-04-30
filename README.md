@@ -78,33 +78,53 @@ Before you begin, ensure you have the following installed:
 - [Ganache](https://www.trufflesuite.com/ganache) - GUI or CLI version
 - [MetaMask](https://metamask.io/) browser extension
 
-## Project Structure
-
 ```
+
+### Project Structure
 decentralized-job-board/
-├── contracts/              # Smart contracts
-│   ├── JobBoard.sol        # Main contract
-│   └── Migrations.sol      # Truffle migrations
-├── migrations/             # Deployment scripts
-│   ├── 1_initial_migration.js
-│   └── 2_deploy_contracts.js
-├── test/                   # Contract tests
-│   └── JobBoard.test.js    # Test cases for JobBoard contract
-├── client/                 # React frontend
+├── backend/                # Backend code
+│   ├── build/              # Compiled contract artifacts
+│   │   └── contracts/      
+│   │       ├── Context.json
+│   │       ├── JobBoard.json
+│   │       ├── Ownable.json
+│   │       └── ReentrancyGuard.json
+│   ├── contracts/          # Smart contracts
+│   │   └── JobBoard.sol    # Main contract
+│   ├── migrations/         # Deployment scripts
+│   │   └── 2_deploy_contracts.js
+│   ├── test/               # Contract tests
+│   │   └── DecentralizedJobBoard.test.js
+│   ├── package.json        # Backend dependencies
+│   ├── package-lock.json   # Dependency lock file
+│   └── truffle-config.js   # Truffle configuration
+├── frontend/               # React frontend
+│   ├── node_modules/       # Frontend dependencies
 │   ├── public/             # Static files
+│   │   └── index.html      # Main HTML file
 │   ├── src/                # Source files
+│   │   ├── artifacts/      # Contract artifacts
+│   │   │   └── JobBoard.json
 │   │   ├── components/     # React components
-│   │   ├── contexts/       # React contexts (e.g., Web3Context)
-│   │   ├── pages/          # Page components
-│   │   ├── utils/          # Utility functions
-│   │   ├── App.js          # Main App component
-│   │   └── index.js        # Entry point
+│   │   ├── contexts/       # React contexts
+│   │   │   └── Web3Context.js
+│   │   ├── App.jsx         # Main App component
+│   │   ├── App.css         # App styles
+│   │   ├── App.test.js     # App tests
+│   │   ├── config.js       # Configuration
+│   │   ├── index.css       # Global styles
+│   │   ├── index.js        # Entry point
+│   │   └── reportWebVitals.js
+│   ├── .env                # Environment variables
+│   ├── .gitignore          # Git ignore file
 │   ├── package.json        # Frontend dependencies
+│   ├── package-lock.json   # Dependency lock file
 │   └── README.md           # Frontend documentation
-├── scripts/                # Helper scripts
-├── truffle-config.js       # Truffle configuration
-├── package.json            # Project dependencies
-└── README.md               # This file
+└── job-chat-server/        # Chat server
+    ├── node_modules/       # Server dependencies
+    ├── package.json        # Server dependencies
+    ├── package-lock.json   # Dependency lock file
+    └── server.js           # Server code
 ```
 
 ## Setup Instructions
