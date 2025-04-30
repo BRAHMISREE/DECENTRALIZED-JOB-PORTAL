@@ -311,8 +311,7 @@ For more efficient storage of detailed job descriptions, we use Pinata's IPFS pi
 
 - Stores non-critical job data off-chain to reduce gas costs
 - Maintains a link between on-chain job IDs and detailed descriptions via IPFS content hashes (CIDs)
-- Enables rich content like markdown, formatting, and images
-- Provides decentralized storage that aligns with the blockchain philosophy
+
 
 ### Integration
 
@@ -363,45 +362,11 @@ const fetchFromIPFS = async (ipfsHash) => {
 };
 ```
 
-#### Smart Contract Integration
 
-The job posting function stores the IPFS hash in the contract:
-
-```solidity
-struct Job {
-    uint256 id;
-    string title;
-    uint256 budget;
-    address employer;
-    address freelancer;
-    JobStatus status;
-    string ipfsHash;  // Stores the IPFS hash of detailed description
-}
-
-function postJob(string memory _title, string memory _ipfsHash, uint256 _budget) external {
-    // Create new job with IPFS hash reference
-    uint256 jobId = nextJobId++;
-    jobs[jobId] = Job({
-        id: jobId,
-        title: _title,
-        budget: _budget,
-        employer: msg.sender,
-        freelancer: address(0),
-        status: JobStatus.Posted,
-        ipfsHash: _ipfsHash
-    });
     
-    emit JobPosted(jobId, _title, _budget, msg.sender);
-}
-```
+   
 
-### Benefits of IPFS with Pinata
 
-- **Truly Decentralized**: Job descriptions are stored on a distributed network
-- **Content-Addressable**: Data is retrieved by its content hash, ensuring integrity
-- **Cost-Effective**: Reduces on-chain storage costs significantly
-- **Permanent Storage**: Data remains available as long as it's pinned
-- **Censorship Resistant**: No single point of failure for stored data
 
 ## Gas Optimization
 
@@ -438,20 +403,6 @@ To keep transaction costs low, we've implemented several gas optimization techni
 
 The smart contract incorporates several security best practices:
 
-### Access Control
-
-- **Role-Based Restrictions**:
-  - Only employers can post jobs and release payments
-  - Only freelancers can apply for jobs
-  - System functions are properly restricted
-
-```solidity
-// Example from JobBoard.sol
-modifier onlyEmployer(uint256 _jobId) {
-    require(jobs[_jobId].employer == msg.sender, "Only the employer can perform this action");
-    _;
-}
-```
 
 ### Secure Fund Management
 
@@ -497,11 +448,6 @@ modifier onlyEmployer(uint256 _jobId) {
 - **Transaction Stuck**
   - Reset your MetaMask account (Settings > Advanced > Reset Account) if transactions are pending indefinitely
 
-![MetaMask Reset](path/to/metamask-reset.png)
-
-- **Account Not Imported**
-  - Verify that you've imported the correct private key from Ganache
-  - Ensure the account has sufficient ETH for transactions
 
 ### Frontend Issues
 
@@ -517,18 +463,6 @@ modifier onlyEmployer(uint256 _jobId) {
   - Verify that your Pinata API keys are correctly configured
   - Check if the IPFS hash is correctly stored and retrieved from the smart contract
   - Try accessing the content directly via an IPFS gateway to verify availability
-
-### Pinata/IPFS Issues
-
-- **Upload Failures**
-  - Verify your API keys are correct and have the necessary permissions
-  - Check if you've exceeded your Pinata plan limits
-  - Ensure the data format is valid for pinning (valid JSON)
-
-- **Content Not Available**
-  - Confirm the content was successfully pinned by checking the Pinata dashboard
-  - Try accessing via multiple IPFS gateways
-  - Verify the correct hash is being used for retrieval
 
 ### Transaction Failures
 
