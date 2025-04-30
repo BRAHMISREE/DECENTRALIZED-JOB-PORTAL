@@ -286,25 +286,59 @@ The application should now be running at [http://localhost:3000](http://localhos
 
 ## Frontend Screenshots
 
-### Home Page
-![Home Page](path/to/home-page.png)
+## photos
 
-### Job Board
-![Job Board](path/to/job-board-full.png)
+### Welcome Page
+![Welcome Page](photos/Welcome.png)
 
-### Job Details
-![Job Details](path/to/job-details.png)
-
-### Post Job Form
-![Post Job Form](path/to/post-job-form-full.png)
-
-### My Jobs Dashboard
-![My Jobs Dashboard](path/to/my-jobs-dashboard.png)
+### As Employer
+![As_Employer](photos/AS Employer.png)
 
 ### Employer Dashboard
-![Employer Dashboard](path/to/employer-dashboard.png)
+![Employer_Dashboard](photos/Employer Dashboard.png)
 
-## Running Tests
+### Post Job
+![Post_job](photos/Post Job.png)
+
+### Available Jobs
+![Available](photos/Available.png)
+
+
+### Chat 
+![CHAT](photos/CHAT.png)
+
+
+### DISPUTE
+![DISPUTE](photos/DISPUTE.png)
+
+
+
+
+### MARK WORK DONE
+![MARK_WORK_DONE](photos/MARK WORK DONE.png)
+
+### Profile/My Jobs
+![Profile](photos/MY JOBS.png)
+
+### Multiple applicants
+![Multiple_applicants](photos/Multiple applicants.png)
+
+### Posted Jobs
+![Posted](photos/Posted.png)
+
+### Release Payments
+![Release](photos/RELEASE.png)
+
+### Submit Application
+![Submit](photos/Submit application.png)
+
+
+
+### Multiple applicants
+![Multiple applicants](photos/Multiple applicants.png)
+
+
+
 
 To verify that the smart contracts are functioning correctly, run the automated tests:
 
