@@ -133,7 +133,7 @@ decentralized-job-board/
 ### 1. Clone the Repository
 ```
 bash
-git clone https://github.com/yourusername/decentralized-job-board.git
+git clone : https://github.com/Namaswi24/DECENTRALIZED-JOB-PORTAL
 cd decentralized-job-board
 ```
 
