@@ -1,6 +1,6 @@
 # Decentralized Job Board
 
-![Project Banner](path/to/banner-image.png)
+
 
 A trustless job marketplace built on blockchain technology where employers can post jobs with escrowed payments, and freelancers can apply for jobs. Smart contracts automatically handle fund management and job completion processes, release payment upon approval, and handle disputes.
 
@@ -14,15 +14,9 @@ A trustless job marketplace built on blockchain technology where employers can p
 - Korubilli Vaishnavi - 230041016
 - Mullapudi Namaswi - 230041023
 
-## Project Overview
 
-The Decentralized Job Board is a blockchain-based platform that creates a trustless environment for employers and freelancers to connect, collaborate, and transact. The platform eliminates the need for intermediaries by leveraging smart contracts to manage job postings, applications, and payments. This ensures that:
 
-1. Employers have confidence their funds are secure and will only be released upon job completion
-2. Freelancers have confidence they will be paid for completed work
-3. Both parties benefit from reduced fees typically charged by centralized platforms
 
-![Project Overview](path/to/project-overview-diagram.png)
 
 ## Key Features
 
@@ -40,7 +34,7 @@ The Decentralized Job Board is a blockchain-based platform that creates a trustl
 
 The Decentralized Job Board follows a classic decentralized application (DApp) architecture:
 
-![Architecture Diagram](path/to/architecture-diagram.png)
+
 
 1. **Frontend Layer**: React-based user interface that interacts with the blockchain through web3.js
 2. **Blockchain Layer**: Ethereum smart contracts that handle the business logic and enforce rules
@@ -66,7 +60,7 @@ Data flow:
 
 
 ### Off-Chain Storage
-- **Job Description Server**: JSON Server
+- **Job Description Server**: Pinata IPFS Service
 
 ## Smart Contracts
 
@@ -326,23 +320,8 @@ For more efficient storage of detailed job descriptions, we use a local JSON ser
 npm install -g json-server
 ```
 
-2. Create or update the `db.json` file with job descriptions:
 
-```json
-{
-  "jobs": [
-    {
-      "id": 1,
-      "title": "Solidity Developer",
-      "fullDescription": "We need an experienced Solidity developer to create a DeFi application...",
-      "requirements": ["3+ years Solidity experience", "Knowledge of DeFi protocols", "Strong testing skills"],
-      "contactEmail": "employer@example.com"
-    }
-  ]
-}
-```
-
-3. Start the server:
+2. Start the server:
 
 ```bash
 json-server --watch db.json --port 3001
