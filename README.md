@@ -164,10 +164,10 @@ cd ..
 
 
 #### Option 2: Ganache CLI
-
+```
 bash
 npx ganache-cli --port 8545 --networkId 1337 --deterministic
-
+```
 
 ### 4. Configure MetaMask
 
@@ -195,25 +195,25 @@ npx ganache-cli --port 8545 --networkId 1337 --deterministic
 2. Generate an API key from the Pinata dashboard
 3. Add the API key and secret to your project's environment variables (create a .env file in the project root):
 
-
+```
 REACT_APP_PINATA_API_KEY=your_api_key
 REACT_APP_PINATA_SECRET_API_KEY=your_api_secret
-
+```
 
 ### 6. Compile and Deploy Smart Contracts
-
+```
 bash
 truffle compile              # Compile the contracts
 truffle migrate --reset      # Deploy to Ganache
-
+```
 
 
 ### 7. Start the Frontend
-
+```
 bash
 cd client
 npm start
-
+```
 
 The application should now be running at [http://localhost:3000](http://localhost:3000).
 
@@ -329,10 +329,10 @@ The application should now be running at [http://localhost:3000](http://localhos
 ### Testing 
 
 To verify that the smart contracts are functioning correctly, run the automated tests:
-
+```
 bash
 truffle test
-
+```
 
 This will execute all test cases in the test/ directory.
 
@@ -352,23 +352,23 @@ For more efficient storage of detailed job descriptions, we use Pinata's IPFS pi
 #### Backend Integration
 
 1. Install the Pinata SDK in your project:
-
+```
 bash
 npm install @pinata/sdk
-
+```
 
 2. Set up Pinata in your application:
-
+```
 javascript
 const pinataSDK = require('@pinata/sdk');
 const pinata = new pinataSDK({ 
     pinataApiKey: process.env.REACT_APP_PINATA_API_KEY, 
     pinataSecretApiKey: process.env.REACT_APP_PINATA_SECRET_API_KEY 
 });
-
+```
 
 3. Upload job descriptions to IPFS:
-
+```
 javascript
 const uploadToIPFS = async (jobData) => {
   try {
@@ -380,9 +380,9 @@ const uploadToIPFS = async (jobData) => {
   }
 };
 
-
+```
 4. Fetch job descriptions from IPFS:
-
+```
 javascript
 const fetchFromIPFS = async (ipfsHash) => {
   try {
@@ -394,7 +394,7 @@ const fetchFromIPFS = async (ipfsHash) => {
     throw error;
   }
 };
-
+```
 
 ## Troubleshooting
 
