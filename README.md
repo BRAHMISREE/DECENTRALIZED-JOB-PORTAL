@@ -293,9 +293,8 @@ To verify that the smart contracts are functioning correctly, run the automated 
 truffle test
 ```
 
-This will execute all test cases in the `test/` directory and show the results:
+This will execute all test cases in the `test/` directory.
 
-![Truffle Tests](path/to/truffle-tests.png)
 
 ## IPFS Job Description Storage with Pinata
 
@@ -355,45 +354,6 @@ const fetchFromIPFS = async (ipfsHash) => {
   }
 };
 ```
-
-
-    
-   
-
-
-
-## Gas Optimization
-
-To keep transaction costs low, we've implemented several gas optimization techniques:
-
-### Data Storage Optimization
-
-- **Minimal On-Chain Data**: Only essential job information is stored on the blockchain
-  - Job title (kept short)
-  - Budget amount
-  - Status enums
-  - Employer/freelancer addresses
-  - IPFS hash (CID) of detailed description
-  
-- **Off-Chain Storage**: Detailed information is stored on IPFS via Pinata
-  - Comprehensive job descriptions
-  - Requirement lists
-  - Contact information
-  - Application details
-
-### Code Optimization
-
-- **Efficient Data Types**:
-  - `uint256` for ETH values (budget/payment amounts)
-  - `enum` for job status instead of strings
- 
-- **Function Efficiency**:
-  - Avoiding loops in critical functions
-  - Using mappings for O(1) lookups
-  - Minimal state changes per transaction
-
-
-
 
 ## Troubleshooting
 
