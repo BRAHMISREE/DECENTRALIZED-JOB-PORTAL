@@ -322,10 +322,6 @@ The application should now be running at [http://localhost:3000](http://localhos
 
 
 
-### Multiple applicants
-![Multiple applicants](photos/Multiple%20applicants.jpg)
-
-
 ### Testing 
 
 To verify that the smart contracts are functioning correctly, run the automated tests:
