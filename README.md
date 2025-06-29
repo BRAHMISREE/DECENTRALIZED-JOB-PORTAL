@@ -279,7 +279,7 @@ The application should now be running at [http://localhost:3000](http://localhos
 
 
 ### Welcome Page
-![Welcome Page](photos/Welcome%20.jpg)
+![Welcome Page](photos/welcomepage.jpg)
 
 ### As Employer
 ![As_Employer](photos/AS%20Employer.jpg)
